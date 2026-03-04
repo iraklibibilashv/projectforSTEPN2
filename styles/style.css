@@ -7,14 +7,21 @@
   height: 100vh;
   background: 
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-    url("./images/jaecoo-7-phev-front-three-quarter_w960.webp") center/cover no-repeat;
+    url("../images/jaecoo-7-phev-front-three-quarter_w960.webp") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
 }
-
+.cars {
+    padding-top: 100px;
+}
+.cars a {
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+}
 .main-content h1 {
       font-size: 60px;
   margin-bottom: 40px
