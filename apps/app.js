@@ -4,6 +4,7 @@ let main = document.querySelector(`main`);
 let filterBtn = document.querySelector(`#filterBtn`)
 let popularGrid = document.querySelector(`#popularGrid`)
 
+
 let filters = {
   capacity: ``,
   startYear: ``,
@@ -71,6 +72,8 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/filter?${params}`)
   .then((resp) => resp.json())
   .then((data) => {
     main.innerHTML = ``;
+    console.log(data);
+    
 
     data.data.forEach((obj) => {
       let car = document.createElement(`div`);

@@ -11,6 +11,11 @@ loginBtn.addEventListener("click",() => {
     })
     .then(resp => resp.json())
     .then(data => {
+        localStorage.setItem(`user`, JSON.stringify(data))
+        return fetch(`https://rentcar.stepprojects.ge/api/Users/${data.phoneNumber}`)
+    })
+    .then(resp => resp.json())
+    .then(data => {
         console.log(data);
         localStorage.setItem(`user`,JSON.stringify(data))
         alert(`Log in Succesfull`)
