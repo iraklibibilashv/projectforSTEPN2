@@ -1,0 +1,104 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ main{
+  height: 100vh;
+  background: 
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("../images/jaecoo-7-phev-front-three-quarter_w960.webp") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+.cars {
+    padding-top: 100px;
+}
+.cars a {
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+}
+.main-content h1 {
+      font-size: 60px;
+  margin-bottom: 40px
+}
+.main-content h5 {
+    padding-bottom: 20px;
+    font-size: 24px;
+}
+.search-box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.search-box select,
+.search-box input {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.search-box button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  background: #1e40af;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.input-label {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 12px;
+  color: #888;
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  padding: 20px 10px 5px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+
+
+
+/* #region start responsive */
+
+@media (max-width: 768px) {
+  .search-box {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .search-box select,
+  .search-box input,
+  .search-box button {
+    width: 100%;
+  }
+}
+
+/* #endregion responsive */
