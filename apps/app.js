@@ -77,8 +77,22 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/filter?${params}`)
 
     data.data.forEach((obj) => {
       let car = document.createElement(`div`);
-      car.innerHTML += createCard(obj);
+      car.innerHTML = createCard(obj);
       main.appendChild(car);
+      car.querySelector(`.fav-btn`)?.addEventListener(`click`, (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        let user = JSON.parse(localStorage.getItem(`user`))
+        let carId = e.target.dataset.id
+            fetch(`https://rentcar.stepprojects.ge/api/Users/${user.phoneNumber}/favorites/${carId}`, {
+      method: `POST`,
+      headers: {"Content-Type": `application/json`}
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      e.target.textContent = `❤️`
+    })
+      })
 
       car.addEventListener("click", () => {
         window.location.href = `./details.html?id=${obj.id}`;
@@ -87,10 +101,12 @@ fetch(`https://rentcar.stepprojects.ge/api/Car/filter?${params}`)
   });
 }
 function createCard(obj) {
+  let user = JSON.parse(localStorage.getItem(`user`))
   return `<div class="car-card">
     <div class="car-image-wrap">
       <img src="${obj.imageUrl3 || "placeholder.jpg"}" alt="${obj.brand || ""}" />
       <span class="car-badge">${obj.city || "უცნობი"}</span>
+       ${user ? `<button class="fav-btn" data-id="${obj.id}">🤍</button>` : ``}
     </div>
     <div class="car-info">
       <div class="car-name">${obj.brand || "უცნობი"} ${obj.model || ""}</div>
@@ -125,26 +141,5 @@ fetchCars()
 
 
 
-//     return    `<div class="car-card">
-//     <div class="car-image-wrap">
-//       <img src="${obj.imageUrl3}" alt="${obj.brand}" />
-//       <span class="car-badge">${obj.city}</span>
-//     </div>
-//     <div class="car-info">
-//       <div class="car-name">${obj.brand} ${obj.model}</div>
-//       <div class="car-title">${obj.year}</div>
-//       <div class="car-specs">
-//         <div class="spec"><span>⛽</span> ${obj.fuelCapacity}L</div>
-//         <div class="spec"><span>⚙️</span> ${obj.transmission}</div>
-//         <div class="spec"><span>👥</span> ${obj.capacity} Seats</div>
-//       </div>
-//       <div class="car-footer">
-//         <div class="car-price">
-//           $${obj.price} <small>/ day</small>
-//         </div>
-//         <button class="rent-btn">Rent Now</button>
-//       </div>
-//     </div>
-//   </div> `
 
 
